@@ -101,7 +101,7 @@ public class Printer {
         Printer printer = new Printer();
         DocumentRepository documentRepository = new DocumentRepository();
 
-        // Create and start two worker threads
+        // Create and start a worker thread
         PrinterWorker worker = new PrinterWorker(printer,
                 documentRepository, MAX_IDLE);
 
@@ -110,7 +110,7 @@ public class Printer {
         workerThread.start();
 
         try {
-            // Wait for both worker threads to finish and record the time
+            // Wait for all worker threads to finish and record the time
             workerThread.join();
         } catch (InterruptedException e) {
             System.out.println(
